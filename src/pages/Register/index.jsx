@@ -1,0 +1,324 @@
+import { useState } from "react";
+
+// Router-Dom
+import { Navigate } from "react-router-dom";
+
+// Components
+import FormContainer from "../../components/styles/FormContainer";
+import InputContainer from "../../components/styles/InputContainer";
+import MainButton from "../../components/styles/MainButton";
+import TextButton from "../../components/styles/TextButton";
+import styles from "./styles.module.css";
+
+// Hook-Form/yup
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import api from "../../components/services/api";
+
+// Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../../components/styles/toastCustom.css";
+
+// Bootstrap
+import MyBootstrapBtn from "../../components/styles/MyBootstrapBtn";
+import Image from "react-bootstrap/Image";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../components/styles/tooltipCustom.css";
+import exclamation from "../../img/exclamation.png";
+
+const Register = () => {
+  const [registerSucess, setRegisterSucess] = useState(false);
+
+  const schema = yup
+    .object({
+      name: yup.string().required("Senha é obrigatória"),
+      email: yup
+        .string()
+        .email("Email inválido")
+        .required("Email é obrigatório"),
+      password: yup
+        .string()
+        .min(6, "Deve conter no mínimo 6 caracteres")
+        .required("Senha é obrigatória"),
+      confirmPassword: yup
+        .string()
+        .oneOf([yup.ref("password")], "Senhas não coincidem")
+        .required("Você precisa confirmar sua senha"),
+      bio: yup
+        .string()
+        .max(180, "Máximo de 180 caracteres")
+        .required("Biografia é obrigatória"),
+      contact: yup.string().required("Contato é obrigatório"),
+      course_module: yup.string().required("Módulo do curso obrigatório"),
+    })
+    .required();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const handleResolved = (res) => {
+    if (res.status === 201) {
+      toast.success("Cadastro efetuado com sucesso!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      toast.info("Redirecionando para o login", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      setTimeout(() => {
+        setRegisterSucess(true);
+      }, 5000);
+    }
+  };
+
+  const registerUser = (data) => {
+    const handleData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      bio: data.bio,
+      contact: data.contact,
+      course_module: data.course_module,
+    };
+
+    api
+      .post("/users", handleData)
+      .then((res) => handleResolved(res))
+      .catch(() => toast.error("Ops, algo deu errado..."));
+  };
+
+  return (
+    <div className={styles.MainDiv}>
+      {registerSucess && <Navigate to={"/"} />}
+      <div className={styles.MainDiv__Header}>
+        <h1>Kenziehub</h1>
+        <TextButton to={"/"}>Voltar</TextButton>
+      </div>
+      <div className={styles.RegisterContainer}>
+        <div className={styles.RegisterContainer__Header}>
+          <h2>Cria sua conta</h2>
+          <span>Rápido e grátis, vamos nessa</span>
+        </div>
+        <FormContainer onSubmit={handleSubmit(registerUser)}>
+          <InputContainer>
+            <label htmlFor="name">Nome</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Digite aqui seu nome"
+              {...register("name")}
+            />
+            {errors.name && (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="button-tooltip-2">{errors.name.message}</Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <MyBootstrapBtn
+                    variant="light"
+                    {...triggerHandler}
+                    className="d-inline-flex align-items-center"
+                  >
+                    <Image ref={ref} roundedCircle src={exclamation} />
+                  </MyBootstrapBtn>
+                )}
+              </OverlayTrigger>
+            )}
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="text"
+              placeholder="Digite aqui seu email"
+              {...register("email")}
+            />
+            {errors.email && (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="button-tooltip-2">
+                    {errors.email.message}
+                  </Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <MyBootstrapBtn
+                    variant="light"
+                    {...triggerHandler}
+                    className="d-inline-flex align-items-center"
+                  >
+                    <Image ref={ref} roundedCircle src={exclamation} />
+                  </MyBootstrapBtn>
+                )}
+              </OverlayTrigger>
+            )}
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="password">Senha</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Digite aqui sua senha"
+              {...register("password")}
+            />
+            {errors.password && (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="button-tooltip-2">
+                    {errors.password.message}
+                  </Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <MyBootstrapBtn
+                    variant="light"
+                    {...triggerHandler}
+                    className="d-inline-flex align-items-center"
+                  >
+                    <Image ref={ref} roundedCircle src={exclamation} />
+                  </MyBootstrapBtn>
+                )}
+              </OverlayTrigger>
+            )}
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="confirmPassword">Confirmar Senha</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              placeholder="Digite novamente sua senha"
+              {...register("confirmPassword")}
+            />
+            {errors.confirmPassword && (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="button-tooltip-2">
+                    {errors.confirmPassword.message}
+                  </Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <MyBootstrapBtn
+                    variant="light"
+                    {...triggerHandler}
+                    className="d-inline-flex align-items-center"
+                  >
+                    <Image ref={ref} roundedCircle src={exclamation} />
+                  </MyBootstrapBtn>
+                )}
+              </OverlayTrigger>
+            )}
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="name">Bio</label>
+            <input
+              id="bio"
+              type="text"
+              placeholder="Fale sobre você"
+              {...register("bio")}
+            />
+            {errors.bio && (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="button-tooltip-2">{errors.bio.message}</Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <MyBootstrapBtn
+                    variant="light"
+                    {...triggerHandler}
+                    className="d-inline-flex align-items-center"
+                  >
+                    <Image ref={ref} roundedCircle src={exclamation} />
+                  </MyBootstrapBtn>
+                )}
+              </OverlayTrigger>
+            )}
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="contact">Contato</label>
+            <input
+              id="contact"
+              type="text"
+              placeholder="Opção de contato"
+              {...register("contact")}
+            />
+            {errors.contact && (
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="button-tooltip-2">
+                    {errors.contact.message}
+                  </Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <MyBootstrapBtn
+                    variant="light"
+                    {...triggerHandler}
+                    className="d-inline-flex align-items-center"
+                  >
+                    <Image ref={ref} roundedCircle src={exclamation} />
+                  </MyBootstrapBtn>
+                )}
+              </OverlayTrigger>
+            )}
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="course_module">Nome</label>
+            <select id="course_module" {...register("course_module")}>
+              <option value="Primeiro Módulo">Primeiro Módulo</option>
+              <option value="Segundo Módulo">Segundo Módulo</option>
+              <option value="Terceiro Módulo">Terceiro Módulo</option>
+              <option value="Quarto Módulo">Quarto Módulo</option>
+              <option value="Quinto Módulo">Quinto Módulo</option>
+              <option value="Sexto Módulo">Sexto Módulo</option>
+            </select>
+          </InputContainer>
+          <MainButton type="submit">Cadastrar</MainButton>
+        </FormContainer>
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </div>
+  );
+};
+
+export default Register;
