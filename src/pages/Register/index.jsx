@@ -1,37 +1,39 @@
 import { useState } from "react";
 
 // Router-Dom
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // Components
-import FormContainer from "../../components/styles/FormContainer";
-import InputContainer from "../../components/styles/InputContainer";
-import MainButton from "../../components/styles/MainButton";
-import TextButton from "../../components/styles/TextButton";
-import styles from "./styles.module.css";
+import FormContainer from "../../styles/FormContainer";
+import InputContainer from "../../styles/InputContainer";
+import MainButton from "../../styles/MainButton";
+import TextButton from "../../styles/TextButton";
 
 // Hook-Form/yup
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import api from "../../components/services/api";
+
+// API
+import api from "../../services/api";
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../../components/styles/toastCustom.css";
+import "../../styles/toastCustom.css";
 
 // Bootstrap
-import MyBootstrapBtn from "../../components/styles/MyBootstrapBtn";
+import MyBootstrapBtn from "../../styles/MyBootstrapBtn";
 import Image from "react-bootstrap/Image";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../components/styles/tooltipCustom.css";
+import "../../styles/tooltipCustom.css";
 import exclamation from "../../img/exclamation.png";
+import RegisterContainer from "./register";
 
 const Register = () => {
-  const [registerSucess, setRegisterSucess] = useState(false);
+  const navigate = useNavigate();
 
   const schema = yup
     .object({
@@ -65,8 +67,19 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleResolved = (res) => {
-    if (res.status === 201) {
+  const registerUser = async (data) => {
+    const handleData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      bio: data.bio,
+      contact: data.contact,
+      course_module: data.course_module,
+    };
+
+    try {
+      const response = await api.post("/users", handleData);
+
       toast.success("Cadastro efetuado com sucesso!", {
         position: "top-right",
         autoClose: 5000,
@@ -88,36 +101,21 @@ const Register = () => {
       });
 
       setTimeout(() => {
-        setRegisterSucess(true);
+        navigate("/");
       }, 5000);
+    } catch (err) {
+      toast.error("Ops! Algo deu errado...")
     }
   };
 
-  const registerUser = (data) => {
-    const handleData = {
-      name: data.name,
-      email: data.email,
-      password: data.password,
-      bio: data.bio,
-      contact: data.contact,
-      course_module: data.course_module,
-    };
-
-    api
-      .post("/users", handleData)
-      .then((res) => handleResolved(res))
-      .catch(() => toast.error("Ops, algo deu errado..."));
-  };
-
   return (
-    <div className={styles.MainDiv}>
-      {registerSucess && <Navigate to={"/"} />}
-      <div className={styles.MainDiv__Header}>
+    <RegisterContainer>
+      <div className="MainDiv__Header">
         <h1>Kenziehub</h1>
         <TextButton to={"/"}>Voltar</TextButton>
       </div>
-      <div className={styles.RegisterContainer}>
-        <div className={styles.RegisterContainer__Header}>
+      <div className="RegisterContainer">
+        <div className="RegisterContainer__Header">
           <h2>Cria sua conta</h2>
           <span>Rápido e grátis, vamos nessa</span>
         </div>
@@ -317,7 +315,7 @@ const Register = () => {
         draggable
         pauseOnHover
       />
-    </div>
+    </RegisterContainer>
   );
 };
 

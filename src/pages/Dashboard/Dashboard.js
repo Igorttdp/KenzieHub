@@ -35,6 +35,7 @@ export const Header = styled.header`
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
+  
 
   h2 {
     color: var(--color-primary);
