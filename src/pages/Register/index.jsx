@@ -1,8 +1,3 @@
-import { useState } from "react";
-
-// Router-Dom
-import { Navigate, useNavigate } from "react-router-dom";
-
 // Components
 import FormContainer from "../../styles/FormContainer";
 import InputContainer from "../../styles/InputContainer";
@@ -14,11 +9,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-// API
-import api from "../../services/api";
-
 // Toastify
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../../styles/toastCustom.css";
 
@@ -32,8 +24,12 @@ import "../../styles/tooltipCustom.css";
 import exclamation from "../../img/exclamation.png";
 import RegisterContainer from "./register";
 
+// Context
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+
 const Register = () => {
-  const navigate = useNavigate();
+  const { registerUser } = useContext(UserContext);
 
   const schema = yup
     .object({
@@ -66,47 +62,6 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const registerUser = async (data) => {
-    const handleData = {
-      name: data.name,
-      email: data.email,
-      password: data.password,
-      bio: data.bio,
-      contact: data.contact,
-      course_module: data.course_module,
-    };
-
-    try {
-      const response = await api.post("/users", handleData);
-
-      toast.success("Cadastro efetuado com sucesso!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-
-      toast.info("Redirecionando para o login", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-
-      setTimeout(() => {
-        navigate("/");
-      }, 5000);
-    } catch (err) {
-      toast.error("Ops! Algo deu errado...")
-    }
-  };
 
   return (
     <RegisterContainer>

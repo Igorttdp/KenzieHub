@@ -1,0 +1,60 @@
+.modal-content {
+  max-width: 36.9rem;
+  width: 100%;
+  min-height: 30rem;
+  margin: 0 auto;
+}
+
+div.modal-header {
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  background-color: #343b41;
+}
+
+div.modal-body {
+  padding: 0;
+  height: 30rem;
+}
+
+.modal-title h4 {
+  font-size: 1.4rem;
+}
+
+.modalForm div {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2.2rem;
+  max-width: 33rem;
+  width: 100%;
+}
+
+.modalForm {
+  height: 30rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.modalForm div label {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.modalForm div input,
+.modalForm div select {
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1.05rem 1.62rem;
+  background: #343b41;
+}
+
+.modalForm button {
+    max-width: 33rem;
+    width: 100%;
+    background: #FF577F;
+    padding: 1.05rem 0;
+    font-size: 1.6rem;
+    border-radius: 4px;
+}

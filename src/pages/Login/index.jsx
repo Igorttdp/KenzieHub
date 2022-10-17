@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import FormContainer from "../../styles/FormContainer";
 import InputContainer from "../../styles/InputContainer";
 import MainButton from "../../styles/MainButton";
-import api from "../../services/api.js";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,8 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 import "../../styles/toastCustom.css";
 import LinkButton from "../../styles/LinkButton";
 import LoginContainer from "./login";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const { login } = useContext(UserContext);
+  const token = localStorage.getItem("@kenziehub__token");
   const navigate = useNavigate();
 
   const schema = yup
@@ -43,17 +46,9 @@ const Login = () => {
     }
   };
 
-  const login = async (data) => {
-    try {
-      const response = await api.post("/sessions", data);
-      console.log(response)
-      localStorage.setItem("@kenziehub__token", response.data.token);
-      localStorage.setItem("@kenziehub__user", JSON.stringify(response.data.user));
-      navigate("/Dashboard");
-    } catch (e) {
-      toast.error("Email ou Senha incorretos");
-    }
-  };
+  useEffect(() => {
+    if (token) navigate("/Dashboard");
+  });
 
   return (
     <LoginContainer>
