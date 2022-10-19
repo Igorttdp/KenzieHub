@@ -1,4 +1,6 @@
 .modal-content {
+  color: #fff !important;
+  background-color: #343b41 !important;
   max-width: 36.9rem;
   width: 100%;
   min-height: 30rem;
@@ -14,6 +16,7 @@ div.modal-header {
 div.modal-body {
   padding: 0;
   height: 30rem;
+  background-color: #212529;
 }
 
 .modal-title h4 {
@@ -44,10 +47,18 @@ div.modal-body {
 
 .modalForm div input,
 .modalForm div select {
+  border: 1px solid transparent;
+  border-radius: 4px;
   font-size: 1.6rem;
   width: 100%;
   padding: 1.05rem 1.62rem;
+  color: #fff;
   background: #343b41;
+}
+
+.modalForm div input:focus,
+.modalForm div select:focus {
+  border: 1px solid #fff;
 }
 
 .modalForm button {
@@ -57,4 +68,8 @@ div.modal-body {
     padding: 1.05rem 0;
     font-size: 1.6rem;
     border-radius: 4px;
+}
+
+.modalForm button:hover {
+  background: #f33f69;
 }

@@ -75,7 +75,6 @@ const UserProvider = ({ children }) => {
 
       setTechs(response.data.techs);
     } catch {
-      console.log("errorrrrr");
       return;
     }
   };
