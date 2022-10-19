@@ -111,6 +111,7 @@ export const TechContainer = styled.div`
     }
 
     button {
+      background-color: #212529;
       background-image: url(${(props) => props.img});
       background-repeat: no-repeat;
       background-position: center;
