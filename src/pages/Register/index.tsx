@@ -26,7 +26,7 @@ import RegisterContainer from "./register";
 
 // Context
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { IUserRegisterProps, UserContext } from "../../context/Auth/UserContext";
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);
@@ -59,7 +59,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IUserRegisterProps>({
     resolver: yupResolver(schema),
   });
 

@@ -1,16 +1,40 @@
-import { createContext, useEffect, useState } from "react";
-import api from "../services/api";
+import { createContext, ReactNode } from "react";
+import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export const UserContext = createContext({});
+interface IUserProviderProps {
+  children: ReactNode;
+}
 
-const UserProvider = ({ children }) => {
+export interface IUserLoginProps {
+  email: string;
+  password: string;
+}
+
+export interface IUserRegisterProps {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  bio: string;
+  contact: string;
+  course_module: string;
+}
+
+interface IUserContextProps {
+  login(data: IUserLoginProps): Promise<void>;
+  registerUser(data: IUserRegisterProps): Promise<void>;
+}
+
+export const UserContext = createContext<IUserContextProps>(
+  {} as IUserContextProps
+);
+
+const UserProvider = ({ children }: IUserProviderProps) => {
   const navigate = useNavigate();
-  const [techs, setTechs] = useState([]);
-  const token = localStorage.getItem("@kenziehub__token");
 
-  const login = async (data) => {
+  const login = async (data: IUserLoginProps): Promise<void> => {
     try {
       const response = await api.post("/sessions", data, {
         headers: {
@@ -28,7 +52,7 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (data) => {
+  const registerUser = async (data: IUserRegisterProps): Promise<void> => {
     const handleData = {
       name: data.name,
       email: data.email,
@@ -69,42 +93,8 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const getTechs = async () => {
-    try {
-      const response = await api.get("/profile");
-
-      setTechs(response.data.techs);
-    } catch {
-      return;
-    }
-  };
-
-  const addTech = async (data) => {
-    try {
-      await api.post("/users/techs", data);
-      getTechs();
-    } catch (e) {
-      toast.error("Ops, algo deu errado. Tente Novamente.");
-    }
-  };
-
-  const deleteTech = async (techId) => {
-    try {
-      await api.delete(`/users/techs/${techId}`);
-      getTechs();
-    } catch {
-      toast.error("Erro. Tente novamente.");
-    }
-  };
-
-  useEffect(() => {
-    if (token) getTechs();
-  }, [token]);
-
   return (
-    <UserContext.Provider
-      value={{ login, registerUser, techs, setTechs, addTech, deleteTech }}
-    >
+    <UserContext.Provider value={{ login, registerUser }}>
       {children}
     </UserContext.Provider>
   );

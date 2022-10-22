@@ -87,7 +87,13 @@ export const Card = styled.div`
   }
 `;
 
-export const TechContainer = styled.div`
+
+interface ITechContainerProps {
+  img: string;
+  remove: string;
+}
+
+export const TechContainer = styled.div<ITechContainerProps>`
   width: 100%;
   padding: 1.2rem;
   margin: 0 auto;
@@ -169,6 +175,7 @@ export const TechContainer = styled.div`
           }
 
           button {
+            background-color: transparent;
             background-image: url(${(props) => props.remove});
             background-repeat: no-repeat;
             width: 13px;

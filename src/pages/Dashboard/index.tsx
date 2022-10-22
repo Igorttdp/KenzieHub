@@ -6,7 +6,10 @@ import React, { useEffect, useState } from "react";
 
 // Context
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import {
+  IAddTechsDataProps,
+  TechsContext,
+} from "../../context/Technologies/TechsContext";
 
 // Hook Form
 import { useForm } from "react-hook-form";
@@ -25,10 +28,16 @@ import remove from "../../img/remove.svg";
 
 const Dashboard = () => {
   const token = localStorage.getItem("@kenziehub__token");
-  const user = JSON.parse(localStorage.getItem("@kenziehub__user"));
-  const { techs, addTech } = useContext(UserContext);
+  const info = localStorage.getItem("@kenziehub__user");
+  const { techs, addTech } = useContext(TechsContext);
 
   const [show, setShow] = useState(false);
+
+  let profile;
+
+  if (info) {
+    profile = JSON.parse(info);
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,16 +50,16 @@ const Dashboard = () => {
     reset,
     formState,
     formState: { isSubmitSuccessful },
-  } = useForm();
+  } = useForm<IAddTechsDataProps>();
 
   useEffect(() => {
     if (!token) {
-      localStorage.clear()
-      navigate("/")
+      localStorage.clear();
+      navigate("/");
     }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect(() => {
     if (isSubmitSuccessful) {
@@ -72,8 +81,8 @@ const Dashboard = () => {
         </Header>
         <Card>
           <div className="content">
-            <h3>Olá, {user?.name}</h3>
-            <span>{user?.course_module}</span>
+            <h3>Olá, {profile?.name}</h3>
+            <span>{profile?.course_module}</span>
           </div>
         </Card>
         <TechContainer img={add} remove={remove}>
@@ -112,7 +121,7 @@ const Dashboard = () => {
               </div>
               <div>
                 <label htmlFor="status">Selecionar status</label>
-                <select name="status" id="status" {...register("status")}>
+                <select id="status" {...register("status")}>
                   <option value="Iniciante">Iniciante</option>
                   <option value="Intermediário">Intermediário</option>
                   <option value="Avançado">Avançado</option>

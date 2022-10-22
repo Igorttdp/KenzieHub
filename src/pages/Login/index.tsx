@@ -10,7 +10,7 @@ import "../../styles/toastCustom.css";
 import LinkButton from "../../styles/LinkButton";
 import LoginContainer from "./login";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../context/UserContext";
+import { IUserLoginProps, UserContext } from "../../context/Auth/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -28,11 +28,11 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IUserLoginProps>({
     resolver: yupResolver(schema),
   });
 
-  const showErrors = (errors) => {
+  const showErrors = (errors: IErrorsProps)  => {
     if (errors.email) {
       toast.error(errors.email.message, {
         toastId: 1,
@@ -46,13 +46,23 @@ const Login = () => {
     }
   };
 
+  if (errors.email || errors.password) showErrors(errors)
+
   useEffect(() => {
     if (token) navigate("/Dashboard");
   });
 
+  interface IErrorsProps {
+    email?: {
+      message?: string;
+    };
+    password?: {
+      message?: string;
+    }
+  }
+
   return (
     <LoginContainer>
-      {(errors.email || errors.password) && showErrors(errors)}
       <h1>Kenziehub</h1>
       <div className="loginContainer">
         <h2>Login</h2>

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const LoginContainer = styled.div`
+interface ILoginContainerProps {
+  children: JSX.Element|JSX.Element[];
+}
+
+const LoginContainer = styled.div<ILoginContainerProps>`
   width: 100%;
   min-height: 100vh;
   background-color: var(--grey4);
