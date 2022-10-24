@@ -25,7 +25,7 @@ interface ITechsContextProps {
 }
 
 const TechsProvider = ({ children }: ITechsProviderProps) => {
-  const [techs, setTechs] = useState([]);
+  const [techs, setTechs] = useState<ITechsDataProps[]>([]);
   const token = localStorage.getItem("@kenziehub__token");
 
   const getTechs = async () => {
