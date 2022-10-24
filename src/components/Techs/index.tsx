@@ -9,7 +9,7 @@ const Techs = () => {
       {techs.map((el, i) => {
         return (
           <li key={i} aria-labelledby={el.title}>
-            <h3>{el.status}</h3>
+            <h3>{el.title}</h3>
 
             <div>
               <span>{el.status}</span>
