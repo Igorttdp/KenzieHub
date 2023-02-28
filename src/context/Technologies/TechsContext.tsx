@@ -1,5 +1,5 @@
 // React
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext } from "react";
 
 // React Hook Form
 import { SubmitHandler } from "react-hook-form/dist/types/form";
@@ -14,7 +14,6 @@ import { UserContext } from "../Auth/UserContext";
 import {
   IAddTechsDataProps,
   ITechsContextProps,
-  ITechsDataProps,
   ITechsProviderProps,
 } from "./interfaces";
 
@@ -27,7 +26,6 @@ export const TechsContext = createContext<ITechsContextProps>(
 
 const TechsProvider = ({ children }: ITechsProviderProps) => {
   const { getProfile } = useContext(UserContext);
-  const [techs, setTechs] = useState<ITechsDataProps[] | []>([]);
 
   const addTech: SubmitHandler<IAddTechsDataProps> = async (
     data: IAddTechsDataProps
@@ -53,8 +51,6 @@ const TechsProvider = ({ children }: ITechsProviderProps) => {
   return (
     <TechsContext.Provider
       value={{
-        techs,
-        setTechs,
         addTech,
         deleteTech,
       }}
