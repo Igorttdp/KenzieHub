@@ -1,31 +1,14 @@
-import { createContext, ReactNode } from "react";
+import { createContext, useState } from "react";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-interface IUserProviderProps {
-  children: ReactNode;
-}
-
-export interface IUserLoginProps {
-  email: string;
-  password: string;
-}
-
-export interface IUserRegisterProps {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  bio: string;
-  contact: string;
-  course_module: string;
-}
-
-interface IUserContextProps {
-  login(data: IUserLoginProps): Promise<void>;
-  registerUser(data: IUserRegisterProps): Promise<void>;
-}
+import {
+  IUserContextProps,
+  IUserLoginProps,
+  IUserProfileProps,
+  IUserProviderProps,
+  IUserRegisterProps,
+} from "./interfaces";
 
 export const UserContext = createContext<IUserContextProps>(
   {} as IUserContextProps
@@ -33,6 +16,28 @@ export const UserContext = createContext<IUserContextProps>(
 
 const UserProvider = ({ children }: IUserProviderProps) => {
   const navigate = useNavigate();
+
+  const [profile, setProfile] = useState<IUserProfileProps>({
+    id: "",
+    email: "",
+    name: "",
+    bio: "",
+    contact: "",
+    course_module: "",
+    updated_at: null,
+    techs: [],
+    works: [],
+  });
+
+  const getProfile = async (): Promise<void> => {
+    try {
+      const response = await api.get("/profile");
+
+      setProfile(response.data);
+    } catch {
+      toast.error("Ops... Ocorreu um erro!");
+    }
+  };
 
   const login = async (data: IUserLoginProps): Promise<void> => {
     try {
@@ -42,10 +47,8 @@ const UserProvider = ({ children }: IUserProviderProps) => {
         },
       });
       localStorage.setItem("@kenziehub__token", response.data.token);
-      localStorage.setItem(
-        "@kenziehub__user",
-        JSON.stringify(response.data.user)
-      );
+      sessionStorage.setItem("@kenziehub__first_login", "true");
+      setProfile(response.data.user);
       navigate("/Dashboard");
     } catch (e) {
       toast.error("Email ou Senha incorretos");
@@ -94,7 +97,9 @@ const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ login, registerUser }}>
+    <UserContext.Provider
+      value={{ login, registerUser, profile, setProfile, getProfile }}
+    >
       {children}
     </UserContext.Provider>
   );
