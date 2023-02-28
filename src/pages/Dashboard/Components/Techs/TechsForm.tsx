@@ -1,9 +1,17 @@
+
+// React
 import { useContext, useEffect } from "react";
+
+// React Hook Form
 import { useForm } from "react-hook-form";
+
+// Techs Interfaces and Context
 import {
   IAddTechsDataProps,
   TechsContext,
 } from "../../../../context/Technologies/TechsContext";
+
+// Components
 import CustomForm from "../Modal/CustomForm";
 
 export interface iTechsProps {
