@@ -1,48 +1,41 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
-import { toast } from "react-toastify";
+// React
+import { createContext, useState, useContext } from "react";
+
+// React Hook Form
+import { SubmitHandler } from "react-hook-form/dist/types/form";
+
+// Axios
 import api from "../../services/api";
+
+// Context
+import { UserContext } from "../Auth/UserContext";
+
+// Interfaces
+import {
+  IAddTechsDataProps,
+  ITechsContextProps,
+  ITechsDataProps,
+  ITechsProviderProps,
+} from "./interfaces";
+
+// Toastify
+import { toast } from "react-toastify";
 
 export const TechsContext = createContext<ITechsContextProps>(
   {} as ITechsContextProps
 );
 
-interface ITechsProviderProps {
-  children: ReactNode;
-}
-
-export interface ITechsDataProps {
-  title: string;
-  status: string;
-  id: string;
-}
-
-export type IAddTechsDataProps = Omit<ITechsDataProps, "id">;
-
-interface ITechsContextProps {
-  techs: ITechsDataProps[];
-  addTech(data: IAddTechsDataProps): Promise<void>;
-  deleteTech(techId: string): Promise<void>;
-}
-
 const TechsProvider = ({ children }: ITechsProviderProps) => {
-  const [techs, setTechs] = useState<ITechsDataProps[]>([]);
-  const token = localStorage.getItem("@kenziehub__token");
+  const { getProfile } = useContext(UserContext);
+  const [techs, setTechs] = useState<ITechsDataProps[] | []>([]);
 
-  const getTechs = async () => {
+  const addTech: SubmitHandler<IAddTechsDataProps> = async (
+    data: IAddTechsDataProps
+  ): Promise<void> => {
     try {
-      const response = await api.get("/profile");
-
-      setTechs(response.data.techs);
-    } catch {
-      console.log("errorrrrr");
-      return;
-    }
-  };
-
-  const addTech = async (data: IAddTechsDataProps): Promise<void> => {
-    try {
+      console.log(data);
       await api.post("/users/techs", data);
-      getTechs();
+      getProfile();
     } catch (e) {
       toast.error("Ops, algo deu errado. Tente Novamente.");
     }
@@ -51,18 +44,21 @@ const TechsProvider = ({ children }: ITechsProviderProps) => {
   const deleteTech = async (techId: string): Promise<void> => {
     try {
       await api.delete(`/users/techs/${techId}`);
-      getTechs();
+      getProfile();
     } catch {
       toast.error("Erro. Tente novamente.");
     }
   };
 
-  useEffect(() => {
-    if (token) getTechs();
-  }, [token]);
-
   return (
-    <TechsContext.Provider value={{ techs, addTech, deleteTech }}>
+    <TechsContext.Provider
+      value={{
+        techs,
+        setTechs,
+        addTech,
+        deleteTech,
+      }}
+    >
       {children}
     </TechsContext.Provider>
   );
