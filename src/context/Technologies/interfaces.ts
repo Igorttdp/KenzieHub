@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { ReactNode } from "react";
 
 export default interface ITechProps {
   id: string;
@@ -12,17 +12,12 @@ export interface ITechsProviderProps {
   children: ReactNode;
 }
 
-export interface ITechsDataProps {
+export interface IAddTechsDataProps {
   title: string;
   status: string;
-  id: string;
 }
 
-export type IAddTechsDataProps = Omit<ITechsDataProps, "id">;
-
 export interface ITechsContextProps {
-  techs: ITechsDataProps[] | [];
-  setTechs: Dispatch<SetStateAction<ITechsDataProps[] | []>>;
   addTech(data: IAddTechsDataProps): Promise<void>;
   deleteTech(techId: string): Promise<void>;
 }
