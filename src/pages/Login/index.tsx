@@ -1,17 +1,32 @@
-import { useForm } from "react-hook-form";
-import FormContainer from "../Dashboard/components/FormContainer";
-import InputContainer from "../../components/InputContainer";
-import MainButton from "../../components/MainButton";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "../../styles/toastCustom.css";
+// React
+import { useContext, useEffect } from "react";
+
+// Context
+import { IUserLoginProps, UserContext } from "../../context/Auth/UserContext";
+
+// Components
 import LinkButton from "../../components/LinkButton";
 import LoginContainer from "./components/login";
-import { useContext, useEffect } from "react";
-import { IUserLoginProps, UserContext } from "../../context/Auth/UserContext";
+import InputContainer from "../../components/InputContainer";
+import MainButton from "../../components/MainButton";
+import FormContainer from "../Dashboard/components/FormContainer";
+
+// React Router Dom
 import { useNavigate } from "react-router-dom";
+
+// React Hook Form
+import { useForm } from "react-hook-form";
+
+// Yup
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+// React Toastify
+import { ToastContainer, toast } from "react-toastify";
+
+// Styles
+import "react-toastify/dist/ReactToastify.css";
+import "../../styles/toastCustom.css";
 
 const Login = () => {
   const { login } = useContext(UserContext);
@@ -32,7 +47,7 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const showErrors = (errors: IErrorsProps)  => {
+  const showErrors = (errors: IErrorsProps) => {
     if (errors.email) {
       toast.error(errors.email.message, {
         toastId: 1,
@@ -46,7 +61,7 @@ const Login = () => {
     }
   };
 
-  if (errors.email || errors.password) showErrors(errors)
+  if (errors.email || errors.password) showErrors(errors);
 
   useEffect(() => {
     if (token) navigate("/Dashboard");
@@ -58,7 +73,7 @@ const Login = () => {
     };
     password?: {
       message?: string;
-    }
+    };
   }
 
   return (
