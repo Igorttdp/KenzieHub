@@ -1,12 +1,16 @@
+// React
+import { useEffect, useState } from "react";
+
+// Components
 import { Home, Header, Card, TechContainer } from "./components";
 import Techs from "./components/Techs";
 import TextButton from "../../components/TextButton";
+
+// React Router Dom
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 // Context
 import { useContext } from "react";
-import { TechsContext } from "../../context/Technologies/TechsContext";
 
 // toast
 import { ToastContainer } from "react-toastify";
@@ -15,24 +19,20 @@ import { ToastContainer } from "react-toastify";
 import add from "../../img/add.svg";
 import remove from "../../img/remove.svg";
 import CustomModal from "./components/Modal/CustomModal";
+import { UserContext } from "../../context/Auth/UserContext";
 
 const Dashboard = () => {
   const token = localStorage.getItem("@kenziehub__token");
-  const info = localStorage.getItem("@kenziehub__user");
-  const { techs } = useContext(TechsContext);
+  const firstLogin = sessionStorage.getItem("@kenziehub__first_login");
+  const { profile, getProfile } = useContext(UserContext);
 
-  let profile;
-
-  if (info) {
-    profile = JSON.parse(info);
-  }
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const renderTechs = () => {
-    if (techs.length !== 0)
+    if (profile.techs.length !== 0)
       return (
         <div className="Tcontainer">
           <Techs />
@@ -48,8 +48,13 @@ const Dashboard = () => {
       navigate("/");
     }
 
+    if (firstLogin) {
+      window.addEventListener("beforeunload", (e: BeforeUnloadEvent) => {
+        sessionStorage.clear();
+      });
+    } else getProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [token]);
 
   return (
     <Home>
@@ -61,8 +66,8 @@ const Dashboard = () => {
       </Header>
       <Card>
         <div className="content">
-          <h3>Olá, {profile?.name}</h3>
-          <span>{profile?.course_module}</span>
+          <h3>Olá, {profile.name}</h3>
+          <span>{profile.course_module}</span>
         </div>
       </Card>
       <TechContainer img={add} remove={remove}>

@@ -1,15 +1,14 @@
-
 // React
-import { useContext, useEffect } from "react";
+import { BaseSyntheticEvent, useContext, useEffect } from "react";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
 
-// Techs Interfaces and Context
-import {
-  IAddTechsDataProps,
-  TechsContext,
-} from "../../../../context/Technologies/TechsContext";
+// Context
+import { TechsContext } from "../../../../context/Technologies/TechsContext";
+
+// Interface
+import { IAddTechsDataProps } from "../../../../context/Technologies/interfaces";
 
 // Components
 import CustomForm from "../Modal/CustomForm";
@@ -29,8 +28,8 @@ const TechsForm = ({ handleClose }: iTechsProps) => {
     formState: { isSubmitSuccessful },
   } = useForm<IAddTechsDataProps>();
 
-  const onFormSubmit = () => {
-    handleSubmit(addTech);
+  const onFormSubmit = (e: BaseSyntheticEvent) => {
+    handleSubmit(addTech)(e);
     handleClose();
   };
 

@@ -1,12 +1,17 @@
+// React
 import { useContext, MouseEvent } from "react";
+
+// Context
+import { UserContext } from "../../../../context/Auth/UserContext";
 import { TechsContext } from "../../../../context/Technologies/TechsContext";
 
 const Techs = () => {
-  const { techs, deleteTech } = useContext(TechsContext);
+  const { deleteTech } = useContext(TechsContext);
+  const { profile } = useContext(UserContext);
 
   return (
     <ul>
-      {techs.map((el, i) => {
+      {profile.techs.map((el, i) => {
         return (
           <li key={i} aria-labelledby={el.title}>
             <h3>{el.title}</h3>
@@ -20,7 +25,9 @@ const Techs = () => {
                     el.parentElement?.parentElement?.getAttribute(
                       "aria-labelledby"
                     );
-                  const tech = techs.find((el) => el.title === techName);
+                  const tech = profile.techs.find(
+                    (el) => el.title === techName
+                  );
                   if (tech?.id) {
                     deleteTech(tech.id);
                   }
