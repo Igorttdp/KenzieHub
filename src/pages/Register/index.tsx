@@ -21,12 +21,17 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/tooltipCustom.css";
-import exclamation from "../../img/exclamation.png";
 import RegisterContainer from "./components/register";
 
 // Context
 import { useContext } from "react";
-import { IUserRegisterProps, UserContext } from "../../context/Auth/UserContext";
+import { UserContext } from "../../context/Auth/UserContext";
+
+// Interface
+import { IUserRegisterProps } from "../../context/Auth/interfaces";
+
+// Images
+import exclamation from "../../img/exclamation.png";
 
 const Register = () => {
   const { registerUser } = useContext(UserContext);

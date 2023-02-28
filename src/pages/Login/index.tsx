@@ -2,7 +2,10 @@
 import { useContext, useEffect } from "react";
 
 // Context
-import { IUserLoginProps, UserContext } from "../../context/Auth/UserContext";
+import { UserContext } from "../../context/Auth/UserContext";
+
+// Interfaces
+import { IUserLoginProps } from "../../context/Auth/interfaces";
 
 // Components
 import LinkButton from "../../components/LinkButton";
