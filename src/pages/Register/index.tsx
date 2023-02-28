@@ -1,8 +1,8 @@
 // Components
-import FormContainer from "../../styles/FormContainer";
-import InputContainer from "../../styles/InputContainer";
-import MainButton from "../../styles/MainButton";
-import TextButton from "../../styles/TextButton";
+import FormContainer from "../Dashboard/components/FormContainer";
+import InputContainer from "../../components/InputContainer";
+import MainButton from "../../components/MainButton";
+import TextButton from "../../components/TextButton";
 
 // Hook-Form/yup
 import { useForm } from "react-hook-form";
@@ -15,14 +15,14 @@ import "react-toastify/dist/ReactToastify.css";
 import "../../styles/toastCustom.css";
 
 // Bootstrap
-import MyBootstrapBtn from "../../styles/MyBootstrapBtn";
+import MyBootstrapBtn from "../../components/MyBootstrapBtn";
 import Image from "react-bootstrap/Image";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/tooltipCustom.css";
 import exclamation from "../../img/exclamation.png";
-import RegisterContainer from "./register";
+import RegisterContainer from "./components/register";
 
 // Context
 import { useContext } from "react";
