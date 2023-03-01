@@ -49,6 +49,11 @@ const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@kenziehub__token", response.data.token);
       sessionStorage.setItem("@kenziehub__first_login", "true");
       setProfile(response.data.user);
+
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${response.data.token}`;
+
       navigate("/Dashboard");
     } catch (e) {
       toast.error("Email ou Senha incorretos");
