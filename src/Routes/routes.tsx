@@ -1,14 +1,38 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
-import Register from "../pages/Register";
+import Loader from "../components/Loader";
+
+const Login = lazy(() => import("../pages/Login"));
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Register = lazy(() => import("../pages/Register"));
 
 const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
-      <Route path="/Dashboard" element={<Dashboard />} />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Login />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/Register"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Register />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/Dashboard"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Dashboard />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };
