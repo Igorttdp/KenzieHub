@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 
 // Components
-import { Home, Header, Card, TechContainer } from "./components";
-import Techs from "./components/Techs";
+import { Home, Header, Card, TechContainer } from "./Components";
+import Techs from "./Components/Techs";
 import TextButton from "../../components/TextButton";
 
 // React Router Dom
@@ -18,7 +18,7 @@ import { ToastContainer } from "react-toastify";
 // Images
 import add from "../../img/add.svg";
 import remove from "../../img/remove.svg";
-import CustomModal from "./components/Modal/CustomModal";
+import CustomModal from "./Components/Modal/CustomModal";
 import { UserContext } from "../../context/Auth/UserContext";
 
 const Dashboard = () => {
