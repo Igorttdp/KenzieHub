@@ -31,7 +31,6 @@ const TechsProvider = ({ children }: ITechsProviderProps) => {
     data: IAddTechsDataProps
   ): Promise<void> => {
     try {
-      console.log(data);
       await api.post("/users/techs", data);
       getProfile();
     } catch (e) {
