@@ -1,7 +1,7 @@
 <span>Para README em Portguês<a href="./README_pt-br.md" target="blank__">clique aqui</a>.</span>
 
-<h2>Pré-Visualização 🔎</h2>
-<img src="./assets/loginPage.png" alt="Página de login" />
+<h2>Preview 🔎</h2>
+<img src="./assets/loginPage.png" alt="login Page" />
 
 <br/>
 
