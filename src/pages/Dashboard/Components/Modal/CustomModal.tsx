@@ -1,8 +1,10 @@
 import { Modal } from "react-bootstrap";
 import styled from "styled-components";
+
 import TechsForm, { iTechsProps } from "../Techs/TechsForm";
 import CustomModalBody from "./CustomModalBody";
 import CustomModalHeader from "./CustomModalHeader";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const CustomModalStyled = styled(Modal)`
   .modal-content {
