@@ -12,7 +12,7 @@ import LinkButton from "../../components/LinkButton";
 import LoginContainer from "./components/login";
 import InputContainer from "../../components/InputContainer";
 import MainButton from "../../components/MainButton";
-import FormContainer from "../Dashboard/components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 
 // React Router Dom
 import { useNavigate } from "react-router-dom";

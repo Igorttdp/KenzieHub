@@ -1,5 +1,5 @@
 // Components
-import FormContainer from "../Dashboard/components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 import InputContainer from "../../components/InputContainer";
 import MainButton from "../../components/MainButton";
 import TextButton from "../../components/TextButton";
