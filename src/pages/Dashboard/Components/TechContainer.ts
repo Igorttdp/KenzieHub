@@ -12,6 +12,7 @@ export const TechContainer = styled.div<ITechContainerProps>`
   display: flex;
   flex-flow: column nowrap;
   gap: 2.1rem;
+  align-items: center;
 
   .header {
     width: 100%;
