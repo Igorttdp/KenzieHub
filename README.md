@@ -1,4 +1,4 @@
-<span>Para README em Portguês<a href="./README_pt-br.md" target="blank__">clique aqui</a>.</span>
+<span>Para README em Português <a href="./README_pt-br.md" target="blank__">clique aqui</a>.</span>
 
 <h2>Preview 🔎</h2>
 <img src="./assets/loginPage.png" alt="login Page" />
