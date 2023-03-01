@@ -40,6 +40,8 @@ const Dashboard = () => {
       );
   };
 
+  const clearStorage = () => localStorage.clear();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +62,7 @@ const Dashboard = () => {
     <Home>
       <Header>
         <h2>Kenziehub</h2>
-        <TextButton to={"/"} onClick={() => localStorage.clear()}>
+        <TextButton to={"/"} onClick={clearStorage}>
           Sair
         </TextButton>
       </Header>
