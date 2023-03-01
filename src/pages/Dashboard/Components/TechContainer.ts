@@ -56,6 +56,11 @@ export const TechContainer = styled.div<ITechContainerProps>`
       flex-flow: column nowrap;
       gap: 1.6rem;
 
+      @media (max-width: 800px) {
+        padding-left: 2%;
+        padding-right: 2%;
+      }
+
       li {
         width: 100%;
         background-color: #121214;
@@ -99,4 +104,4 @@ export const TechContainer = styled.div<ITechContainerProps>`
   }
 `;
 
-export default TechContainer
+export default TechContainer;
