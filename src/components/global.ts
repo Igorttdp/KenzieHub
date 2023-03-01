@@ -67,8 +67,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    text-decoration: none;
-    color: var(--grey0);  
+    text-decoration: none !important;
+    color: var(--grey0) !important;  
   }
 
   button {
