@@ -20,6 +20,7 @@ import add from "../../img/add.svg";
 import remove from "../../img/remove.svg";
 import CustomModal from "./Components/Modal/CustomModal";
 import { UserContext } from "../../context/Auth/UserContext";
+import NoTechs from "./Components/NoTechs";
 
 const Dashboard = () => {
   const token = localStorage.getItem("@kenziehub__token");
@@ -38,6 +39,7 @@ const Dashboard = () => {
           <Techs />
         </div>
       );
+    else return <NoTechs />;
   };
 
   const clearStorage = () => localStorage.clear();
