@@ -38,7 +38,7 @@ const Register = () => {
 
   const schema = yup
     .object({
-      name: yup.string().required("Senha é obrigatória"),
+      name: yup.string().required("Nome é obrigatório"),
       email: yup
         .string()
         .email("Email inválido")
