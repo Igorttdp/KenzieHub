@@ -1,18 +1,22 @@
-<span>For README in English <a href="./README.md" target="black__">click here</a>.</span>
+<span>Para README em Portguês<a href="./README_pt-br.md" target="blank__">clique aqui</a>.</span>
 
-<h2>Preview 🔎</h2>
+<h2>Pré-Visualização 🔎</h2>
 <img src="./assets/loginPage.png" alt="Página de login" />
 
-<h1>Sobre 📘</h1>
-<p>Kenziehub é uma simulação de "rede social" para desenvolvedores onde o usuário pode criar uma conta, logar, ter acesso a dashboard e adicionar suas tecnologias favoritas de acordo com seu nível de experiência. Originalmente feita com React/JS e refatorada para React/TS, kenziehub é uma aplicação Front-end CRUD (Create, Read, Update, Delete) que utiliza o endpoint (<a href="https://kenziehub.herokuapp.com/" target="black__">https://kenziehub.herokuapp.com/</a>) para consumir e enviar dados.</p>
+<br/>
 
-<h2>Estruturação de Projeto e Tecnologias 👩🏻‍💻📂</h2>
-<p>Neste projeto foram utilizados conceitos de <strong>Consumo de Api</strong>, <strong>React Hooks</strong>, <strong>React Context</strong>, <strong>SPA</strong>, <strong>CRUD</strong>, <strong>React Lazy</strong>, <strong>React Suspense, Fallback</strong>, <strong>Renderização Condicional</strong>.</p>
-<img src="./assets/structure.png" alt="Estrutura de pastas" />
+<h1>About 📘</h1>
+<p>Kenziehub is a "social network" simulation for developers where the user can create an account, log in, access the dashboard and add their favorite technologies according to their experience level. Originally made with React/JS and refactored to React/TS, kenziehub is a front-end CRUD (Create, Read, Update, Delete) application that uses the endpoint (<a href="https://kenziehub.herokuapp.com/" target="black__">https://kenziehub.herokuapp.com/</a>) to consume and send data.</p>
+
+<br/>
+
+<h2>Project Structuring and Technologies 👩🏻‍💻📂</h2>
+<p>In this project, concepts of<strong>API Consumption</strong>, <strong>React Hooks</strong>, <strong>React Context</strong>, <strong>SPA</strong>, <strong>CRUD</strong>, <strong>React Lazy</strong>, <strong>React Suspense, Fallback</strong>, <strong>Renderização Condicional</strong>.</p>
+<img src="./assets/structure.png" alt="folder structure" />
 
 <br/><br/>
 
-<h3>Tecnologias / Bibliotecas</h3>
+<h3>Technologies / Libs</h3>
 <ul>
     <li>Axios</li>
     <li>Bootstrap (Button & Modal)</li>
@@ -29,33 +33,33 @@
 
 <br/>
 
-<h2>Como Funciona 🔨</h2>
+<h2>How it works 🔨</h2>
 
 <br/>
 
-<h3>Registro</h3>
+<h3>Register</h3>
 <table>
     <tbody>
         <tr>
-            <td style="text-align: center;" width="50%"><img src="./assets/registerPage.png" alt="Página de registro"/></td>
-            <td width="50%"><p>Na página de registro temos um formulário básico para capturar as informações do usuário. Todos os campos devem ser preenchicos.</p></td>
+            <td style="text-align: center;" width="50%"><img src="./assets/registerPage.png" alt="registration page"/></td>
+            <td width="50%"><p>On the registration page we have a basic form to capture user information. All fields must be filled in.</p></td>
         </tr>
     </tbody>
 </table>
 
 <br/>
 
-<h4>Erros ❌</h3>
+<h4>Errors ❌</h3>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <img src="./assets/registerErrors.png" alt="Imagem de erros no formulário"/>
+                <img src="./assets/registerErrors.png" alt="Image of errors in the form"/>
             </td>
             <td width="50%">
-            <img src="./assets/fieldErrorTooltip.png" alt="Imagem de erro de validação no campo de email"/>
-                <p>Quando os dados enviados tiverem algum erro de validação, será mostrada uma tooltip que ao passar o mouse em cima, mostrará o que não satisfez as condições do campo.</p>
+            <img src="./assets/fieldErrorTooltip.png" alt="Image of validation error in email field"/>
+                <p>When the data sent has a validation error, a tooltip will be displayed that, when hovering the mouse over it, will show what did not satisfy the conditions of the field.</p>
             </td>
         </tr>
     </tbody>
@@ -63,16 +67,17 @@
 
 <br/>
 
-<h4>Sucesso! ✅</h3>
+<h4>Sucess! ✅</h3>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <p>Caso todos os dados sejam validados com sucesso, uma notificação na parte superiora da página irá mostrar o status da requisição e você será redirecionado em alguns segundos para a página de <strong>login</strong>.</p>
+                <p>
+                    If all data is successfully validated, a notification at the top of the page will show the status of the request and you will be redirected in a few seconds to the <strong>login page</strong>.</p>
             </td>
             <td width="50%">
-                <img src="./assets/registerSucess.png" alt="Imagem de login bem sucedido"/>
+                <img src="./assets/registerSucess.png" alt="successful login image"/>
             </td>
         </tr>
     </tbody>
@@ -90,26 +95,26 @@
     <tbody>
         <tr>
             <td width="50%">
-                <img src="./assets/loginForm.png" alt="Formulário da página de login"/>
+                <img src="./assets/loginForm.png" alt="Login page form"/>
             </td>
             <td width="50%">
-                <p>Para entrar na sua conta basta digitar o email e a senha de sua conta nos respectivos campos.</p>
+                <p>To enter your account, simply enter your account email and password in the respective fields.</p>
             </td>
         </tr>
     </tbody>
 </table>
 
-<h4>Erros ❌</h4>
+<h4>Errors ❌</h4>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <p>Semelhante a página de registo, a validação de dados é feita na página de login, porém, os erros são mostrados na parte superior da página. Aqui estão os possíveis erros:</p>
+                <p>Similar to the registration page, data validation is done on the login page, however, errors are shown at the top of the page. Here are possible errors:</p>
             </td>
             <td width="50%">
-                <img src="./assets/loginErrors.png" alt="Imagem notificando erros de campos não enviados"/>
-                <img src="./assets/loginErrors2.png" alt="Imagem notificando erro de informações"/>
+                <img src="./assets/loginErrors.png" alt="Image notifying errors of fields not sent"/>
+                <img src="./assets/loginErrors2.png" alt="Image notifying information error"/>
             </td>
         </tr>
     </tbody>
@@ -117,7 +122,7 @@
 
 <h4>Sucesso! ✅</h4>
 
-<p>Se os dados enviados combinarem com as informações do banco de dados, você será redirecionado para a <strong>Dashboard</strong>! <br/><br/> <strong>Nota:</strong> A aplicação conta com a funcionalidade de <strong>Auto-login</strong>. Clique em <strong>"sair"</strong> na Dashboard para remover esta funcionalidade na próxima vez que entrar na aplicação.</p>
+<p>If the submitted data matches the database information, you will be redirected to the <strong>Dashboard</strong>! <br/><br/> <strong>Note:</strong> The application has <strong>Auto-login</strong> functionality. Click <strong>"sair"</strong> on the Dashboard to remove this feature the next time you log in to the application.</p>
 
 <hr/>
 
@@ -127,15 +132,15 @@
 
 <br/>
 
-<img src="./assets/dashboard.png" alt="Lanche"/>
+<img src="./assets/dashboard.png" alt="Dashboard Page"/>
 
 <br/>
 
-<p>Na Dashboard você encontra algumas informações como seu nome e suas tecnologias favoritas. Se não houver tecnologias adicionadas você pode clicar no botão de adicionar tecnologia para popular seu perfil.</p>
+<p>On the Dashboard you can find some information such as your name and your favorite technologies. If there are no technologies added, you can click the add technology button to populate your profile.</p>
 
 <br/>
 
-<h4>Adicionando Tecnologias</h4>
+<h4>Adding Technologies</h4>
 
 <br/>
 
@@ -143,29 +148,29 @@
     <tbody>
         <tr>
             <td width="50%">
-                <img src="./assets/addTechButton.png" alt="Botão de adicionar tecnologia"/>
+                <img src="./assets/addTechButton.png" alt="Add technology button"/>
             </td>
             <td width="50%">
-                <img src="./assets/addTechForm.png" alt="Formulário de adicionar tecnologia"/>
+                <img src="./assets/addTechForm.png" alt="Add technology form"/>
             </td>
         </tr>
     </tbody>
 </table>
 
-<p>Ao clicar no botão, um formulário irá abrir no centro da tela. Basta inserir o nome da tecnologia, seu nível de experiência e clicar em <strong>Cadastrar Tecnologia.</strong></p>
+<p>By clicking on the button, a form will open in the center of the screen. Simply enter the name of the technology, your experience level and click <strong>Cadastrar Tecnologia.</strong></p>
 
 <br/>
 
-<h4>Erros ❌</h4>
+<h4>Errors ❌</h4>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <p>Caso algo dê errado, uma notificação irá aparecer na parte superior da tela.</p>
+                <p>If something goes wrong, a notification will appear at the top of the screen.</p>
             </td>
             <td width="50%">
-                <img src="./assets/addTechError.png" alt="Imagem notificando erro."/>
+                <img src="./assets/addTechError.png" alt="Image notifying error."/>
             </td>
         </tr>
     </tbody>
@@ -173,32 +178,32 @@
 
 <br/>
 
-<h4>Sucesso! ✅</h4>
+<h4>Sucess! ✅</h4>
 
 <br/>
 
-<img src="./assets/dashboardTechs.png" alt="Tecnologia adicionada."/>
+<img src="./assets/dashboardTechs.png" alt="Technology added."/>
 
 <br/>
 
-<p>Se tudo der certo, a tecnologia adicionada irá aparecer no centro da tela!</p>
+<p>If all goes well, the added technology will appear in the center of the screen!</p>
 
 <br/>
 
-<h4>Excluindo Tecnologias</h4>
+<h4>Excluding Technologies</h4>
 
 <br/>
 
-<p>Num cenário em que você tenha adicionado uma tecnologia errada ou que não utiliza mais e queira excluir do seu perfil, existe a opção de excluir apertando no botão da lixeira da respectiva tecnologia.</p>
+<p>In a scenario where you have added a wrong technology or one that you no longer use and want to delete from your profile, there is an option to delete it by pressing the trash button for the respective technology.</p>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <img src="./assets/manyTechs.png" alt="Lista de tecnologias"/>
+                <img src="./assets/manyTechs.png" alt="list of technologies"/>
             </td>
             <td width="50%">
-                <img src="./assets/excludeTech.png" alt="Tecnologia python com uma seta apontando para a imagem de lixeira"/>
+                <img src="./assets/excludeTech.png" alt="Python technology with an arrow pointing to the trash image"/>
             </td>
         </tr>
     </tbody>
@@ -206,16 +211,16 @@
 
 <br/>
 
-<h4>Erros ❌</h4>
+<h4>Errors ❌</h4>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <p>Caso algo dê errado, semelhantemente as outras funcionalidades, uma notificação irá aparecer na parte superior da tela.</p>
+                <p>In case something goes wrong, similarly to the other features, a notification will appear at the top of the screen.</p>
             </td>
             <td width="50%">
-                <img src="./assets/removeTechError.png" alt="Imagem notificando erro de exclusão da tecnologia"/>
+                <img src="./assets/removeTechError.png" alt="Image notifying technology deletion error"/>
             </td>
         </tr>
     </tbody>
@@ -223,19 +228,19 @@
 
 <br/>
 
-<h4>Sucesso! ✅</h4>
+<h4>Sucess! ✅</h4>
 
 <table>
     <tbody>
         <tr>
             <td width="50%">
-                <img src="./assets/techRemoved.png" alt="Imagem notificando erro de exclusão da tecnologia"/>
+                <img src="./assets/techRemoved.png" alt="Image notifying technology deletion error"/>
             </td>
             <td width="50%">
-                <p>Se tudo der certo, você não verá mais a tecnologia em seu Dashboard!</p>
+                <p>If all goes well, you will no longer see the technology on your Dashboard!</p>
             </td>
         </tr>
     </tbody>
 </table>
 
-<h2><strong>Link do Projeto:</strong> <a href="https://kenziehub-typescript-rho.vercel.app/" target="blank_">Kenziehub</a></h2>
+<h2><strong>Project Link:</strong> <a href="https://kenziehub-typescript-rho.vercel.app/" target="blank_">Kenziehub</a></h2>
