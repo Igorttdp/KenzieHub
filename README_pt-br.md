@@ -54,10 +54,10 @@
 <table>
     <tbody>
         <tr>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/registerErrors.png" alt="Imagem de erros no formulário"/>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
             <img src="./assets/fieldErrorTooltip.png" alt="Imagem de erro de validação no campo de email"/>
                 <p>Quando os dados enviados tiverem algum erro de validação, será mostrada uma tooltip que ao passar o mouse em cima, mostrará o que não satisfez as condições do campo.</p>
             </td>
@@ -75,7 +75,7 @@
             <td width="50%">
                 <p>Caso todos os dados sejam validados com sucesso, uma notificação na parte superiora da página irá mostrar o status da requisição e você será redirecionado em alguns segundos para a página de <strong>login</strong>.</p>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/registerSucess.png" alt="Imagem de login bem sucedido"/>
             </td>
         </tr>
@@ -93,7 +93,7 @@
 <table>
     <tbody>
         <tr>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/loginForm.png" alt="Formulário da página de login"/>
             </td>
             <td width="50%">
@@ -111,7 +111,7 @@
             <td width="50%">
                 <p>Semelhante a página de registo, a validação de dados é feita na página de login, porém, os erros são mostrados na parte superior da página. Aqui estão os possíveis erros:</p>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/loginErrors.png" alt="Imagem notificando erros de campos não enviados"/>
                 <img src="./assets/loginErrors2.png" alt="Imagem notificando erro de informações"/>
             </td>
@@ -146,10 +146,10 @@
 <table>
     <tbody>
         <tr>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/addTechButton.png" alt="Botão de adicionar tecnologia"/>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/addTechForm.png" alt="Formulário de adicionar tecnologia"/>
             </td>
         </tr>
@@ -168,7 +168,7 @@
             <td width="50%">
                 <p>Caso algo dê errado, uma notificação irá aparecer na parte superior da tela.</p>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/addTechError.png" alt="Imagem notificando erro."/>
             </td>
         </tr>
@@ -198,10 +198,10 @@
 <table>
     <tbody>
         <tr>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/manyTechs.png" alt="Lista de tecnologias"/>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/excludeTech.png" alt="Tecnologia python com uma seta apontando para a imagem de lixeira"/>
             </td>
         </tr>
@@ -218,7 +218,7 @@
             <td width="50%">
                 <p>Caso algo dê errado, semelhantemente as outras funcionalidades, uma notificação irá aparecer na parte superior da tela.</p>
             </td>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/removeTechError.png" alt="Imagem notificando erro de exclusão da tecnologia"/>
             </td>
         </tr>
@@ -232,7 +232,7 @@
 <table>
     <tbody>
         <tr>
-            <td width="50%">
+            <td width="50%" style="text-align: center;">
                 <img src="./assets/techRemoved.png" alt="Imagem notificando erro de exclusão da tecnologia"/>
             </td>
             <td width="50%">
@@ -243,3 +243,14 @@
 </table>
 
 <h2><strong>Link do Projeto:</strong> <a href="https://kenziehub-typescript-rho.vercel.app/" target="blank_">Kenziehub</a></h2>
+
+<br/>
+
+<h2>Rodar App Localmente</h2>
+
+<ol>
+    <li>Clone o repositório no seu computador.</li>
+    <li>Abra o terminal no diretório do projeto.</li>
+    <li>Digite "yarn install" ou "npm install" para instalar as dependências.</li>
+    <li>Digite "yarn start" ou "npm run start" para rodar o app localmente.</li>
+</ol>
