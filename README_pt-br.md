@@ -1,5 +1,53 @@
 <span>For README in English <a href="./README.md" target="blank__">click here</a>.</span>
 
+<h2>Sumário</h2>
+<ul>
+    <li><a href="#preview-">Preview</a></li>
+    <li>
+        <a href="#sobre-">Sobre</a>
+        <ul>
+            <li>
+                <a href="#estruturação-de-projeto-e-tecnologias-">Estruturação de Projeto e Tecnologias</a>
+            </li>
+            <li>
+                <a href="#tecnologias--bibliotecas">Tecnologias / Bibliotecas</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#como-funciona-">Como Funciona</a>
+        <ul>
+            <li>
+                <a href="#registro">Registro</a>
+                <ul>
+                    <li><a href="#erros-">Erros</a></li>
+                    <li><a href="#sucesso-">Sucesso</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#login">Login</a>
+                <ul>
+                    <li><a href="#erros--1">Erros</a></li>
+                    <li><a href="#sucesso--2">Sucesso</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#dashboard">Dashboard</a>
+                <ul>
+                    <li><a href="#adicionando-tecnologias">Adicionando Tecnologias</a></li>
+                    <li><a href="#erros--3">Erros</a></li>
+                    <li><a href="#sucesso--4">Sucesso</a></li>
+                    <li><a href="#excluindo-tecnologias">Excluindo Tecnologias</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#link-do-projeto-kenziehub">Link do Projeto</a></li>
+    <li><a href="#rodar-app-localmente">Rodar App Localmente</a></li>
+</ul>
+
+<br/>
+
 <h2>Preview 🔎</h2>
 <img src="./assets/loginPage.png" alt="Página de login" />
 

@@ -1,5 +1,53 @@
 <span>Para README em Português <a href="./README_pt-br.md" target="blank__">clique aqui</a>.</span>
 
+<h2>Sumary</h2>
+<ul>
+    <li><a href="#preview-">Preview</a></li>
+    <li>
+        <a href="#about-">About</a>
+        <ul>
+            <li>
+                <a href="#project-structuring-and-technologies-">Project Structuring and Technologies</a>
+            </li>
+            <li>
+                <a href="#technologies--libs">Technologies / Libs</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#how-it-works-">How It Works</a>
+        <ul>
+            <li>
+                <a href="#register">Register</a>
+                <ul>
+                    <li><a href="#errors-">Errors</a></li>
+                    <li><a href="#sucess-">Sucess</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#login">Login</a>
+                <ul>
+                    <li><a href="#errors--1">Errors</a></li>
+                    <li><a href="#sucess--2">Sucess</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#dashboard">Dashboard</a>
+                <ul>
+                    <li><a href="#adding-technologies'">Adding Techonologies</a></li>
+                    <li><a href="#errors--3">Errors</a></li>
+                    <li><a href="#sucess--4">Sucess</a></li>
+                    <li><a href="#excluding-technologies">Excluding Technologies</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#project-link-kenziehub">Project Link</a></li>
+    <li><a href="#run-app-locally">Run App Locally</a></li>
+</ul>
+
+<br/>
+
 <h2>Preview 🔎</h2>
 <img src="./assets/loginPage.png" alt="login Page" />
 
